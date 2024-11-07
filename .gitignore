@@ -1,0 +1,62 @@
+# Ignore build output and project files
+bin/
+obj/
+
+# User-specific files
+*.userprefs
+*.userosettings
+*.suo
+*.user
+*.user.*
+
+# Build directories
+**/bin/
+**/obj/
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folders for OS and development environment cache
+[Dd]ebug/
+[Rr]elease/
+.vscode/
+.idea/
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Android specific
+.gradle/
+build/
+local.properties
+*.apk
+*.ap_
+
+# iOS specific
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.xcodeproj/*
+*.xcworkspace/*
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# Visual Studio Code
+.vscode/
+.vs/
+
+# Rider
+.idea/
+
+# MAUI Specific Files
+*.app/
