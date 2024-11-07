@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WishList"
-    xmlns:views="clr-namespace:WishList.View.Items"
+    xmlns:Itemsviews="clr-namespace:WishList.View.Items"
     Shell.FlyoutBehavior="Disabled"
     Title="WishList">
 
@@ -15,8 +15,8 @@
             Route="MainPage" />
         <ShellContent
         Title="Items"
-        ContentTemplate="{DataTemplate views:Items}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate Itemsviews:Items}"
+        Route="Items" />
     </TabBar>
 
     <!--<TabBar>
