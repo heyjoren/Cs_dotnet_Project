@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WishList.View.Items.Add.addItem"
+             Title="Add item">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="10">
+
+            <Label Text="Item toevoegen" FontSize="Large" HorizontalOptions="Center" />
+            <Label Text="* is verplicht" FontSize="Small" HorizontalOptions="Center" />
+
+            <Label Text="Naam*:" FontAttributes="Bold" />
+            <Entry Placeholder="Naam" x:Name="NameEntry" />
+            <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding NameErrorVisible}" />
+
+            <Label Text="Prijs* €:" FontAttributes="Bold" />
+            <Entry Placeholder="0" Keyboard="Numeric" x:Name="PriceEntry" />
+            <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding PriceErrorVisible}" />
+
+            <Label Text="Fabrikant*:" FontAttributes="Bold" />
+            <Entry Placeholder="Fabrikant" x:Name="ManufacturerEntry" />
+            <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding ManufacturerErrorVisible}" />
+
+            <Label Text="Beschrijving:" FontAttributes="Bold" />
+            <Editor x:Name="DescriptionEditor" Placeholder="Beschrijving" HeightRequest="100" />
+
+            <Button Text="Toevoegen" BackgroundColor="Lime" TextColor="Black" Clicked="OnAddButtonClicked" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

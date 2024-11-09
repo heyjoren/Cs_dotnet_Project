@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WishList"
     xmlns:Itemsviews="clr-namespace:WishList.View.Items"
-    Shell.FlyoutBehavior="Disabled"
+    xmlns:AddItemsviews="clr-namespace:WishList.View.Items.Add"
     Title="WishList">
 
     <TabBar>
@@ -14,22 +14,12 @@
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
         <ShellContent
-        Title="Items"
-        ContentTemplate="{DataTemplate Itemsviews:Items}"
-        Route="Items" />
-    </TabBar>
-
-    <!--<TabBar>
-        <ShellContent 
-            Title="Home" 
-            Icon="home_icon.png" 
-            ContentTemplate="{DataTemplate local:MainPage}" 
-            Route="MainPage" />
-        <ShellContent 
-            Title="Items" 
-            Icon="settings_icon.png" 
-            ContentTemplate="{DataTemplate views:Items}" 
+            Title="Items"
+            ContentTemplate="{DataTemplate Itemsviews:Items}"
             Route="Items" />
-    </TabBar>-->
-
+        <ShellContent
+            Title="Add item"
+            ContentTemplate="{DataTemplate AddItemsviews:addItem}"
+            Route="AddItem" />
+    </TabBar>
 </Shell>
