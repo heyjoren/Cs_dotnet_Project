@@ -1,4 +1,6 @@
-﻿namespace WishList
+﻿using System.Diagnostics;
+
+namespace WishList
 {
     public partial class MainPage : ContentPage
     {
@@ -7,6 +9,7 @@
         public MainPage()
         {
             InitializeComponent();
+            Console.WriteLine("test");
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
