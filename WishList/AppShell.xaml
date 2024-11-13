@@ -4,12 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WishList"
-    Shell.FlyoutBehavior="Disabled"
+    xmlns:Itemsviews="clr-namespace:WishList.View.Items"
+    xmlns:AddItemsviews="clr-namespace:WishList.View.Items.Add"
     Title="WishList">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        <ShellContent
+            Title="Items"
+            ContentTemplate="{DataTemplate Itemsviews:Items}"
+            Route="Items" />
+        <ShellContent
+            Title="Add item"
+            ContentTemplate="{DataTemplate AddItemsviews:addItem}"
+            Route="AddItem" />
+    </TabBar>
 </Shell>
