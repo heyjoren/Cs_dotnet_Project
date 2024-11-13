@@ -10,21 +10,22 @@
             <Label Text="* is verplicht" FontSize="Small" HorizontalOptions="Center" />
 
             <Label Text="Naam*:" FontAttributes="Bold" />
-            <Entry Placeholder="Naam" x:Name="NameEntry" />
+            <Entry Placeholder="Naam" x:Name="NameEntry" TextChanged="OnTextChanged"/>
             <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding NameErrorVisible}" />
 
             <Label Text="Prijs* €:" FontAttributes="Bold" />
-            <Entry Placeholder="0" Keyboard="Numeric" x:Name="PriceEntry" />
+            <Entry Placeholder="0" Keyboard="Numeric" x:Name="PriceEntry" TextChanged="OnTextChanged"/>
             <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding PriceErrorVisible}" />
+            <Label Text="Het moet een getal zijn" TextColor="Red" IsVisible="{Binding PriceErrorVisibleGetal}" />
 
             <Label Text="Fabrikant*:" FontAttributes="Bold" />
-            <Entry Placeholder="Fabrikant" x:Name="ManufacturerEntry" />
+            <Entry Placeholder="Fabrikant" x:Name="ManufacturerEntry" TextChanged="OnTextChanged"/>
             <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding ManufacturerErrorVisible}" />
 
             <Label Text="Beschrijving:" FontAttributes="Bold" />
             <Editor x:Name="DescriptionEditor" Placeholder="Beschrijving" HeightRequest="100" />
 
-            <Button Text="Toevoegen" BackgroundColor="Lime" TextColor="Black" Clicked="OnAddButtonClicked" />
+            <Button Text="Toevoegen" BackgroundColor="Lime" TextColor="Black" Clicked="OnAddButtonClicked" IsEnabled="{Binding CanAdd}"/>
 
         </StackLayout>
     </ScrollView>
