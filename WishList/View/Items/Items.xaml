@@ -4,9 +4,27 @@
              x:Class="WishList.View.Items.Items"
              Title="Items">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <ListView x:Name="ItemsListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0">
+                                <Label Text="{Binding Naam}" FontSize="16"/>
+                                <Label Text="{Binding Bedrag}" FontSize="14" TextColor="Gray"/>
+                                <Label Text="{Binding Bedrijf}" FontSize="16"/>
+                                <Label Text="{Binding Beschrijving}" FontSize="16"/>
+                                <Label Text="{Binding Datum}" FontSize="16"/>
+
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
 </ContentPage>
