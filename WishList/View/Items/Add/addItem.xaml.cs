@@ -74,6 +74,13 @@ namespace WishList.View.Items.Add
 
                 MockDataStore.ItemsList.Add(item);
                 MockDataStore.ObservableItemsList.Add(item);
+                
+                NameEntry.Text = string.Empty;
+                PriceEntry.Text = string.Empty;
+                DescriptionEditor.Text = string.Empty;
+                ManufacturerEntry.Text = string.Empty;
+
+                Shell.Current.GoToAsync("///Items");
             }
         }
 
