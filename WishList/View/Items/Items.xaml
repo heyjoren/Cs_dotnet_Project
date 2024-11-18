@@ -23,11 +23,26 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Column="0">
-                                <Label Text="{Binding Naam}" FontSize="16"/>
-                                <Label Text="{Binding Bedrag}" FontSize="14" TextColor="Gray"/>
-                                <Label Text="{Binding Bedrijf}" FontSize="16"/>
-                                <Label Text="{Binding Beschrijving}" FontSize="16"/>
-                                <Label Text="{Binding Datum}" FontSize="16"/>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Naam:  " FontSize="16" />
+                                    <Label Text="{Binding Naam}" FontSize="16"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Bedrag:  " FontSize="16" />
+                                    <Label Text="{Binding Bedrag}" FontSize="16"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Bedrijf:  " FontSize="16" />
+                                    <Label Text="{Binding Bedrijf}" FontSize="16"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5" IsVisible="{Binding Beschrijving, Converter={StaticResource StringNotEmptyConverter}}">
+                                    <Label Text="Beschrijving:  " FontSize="16" TextColor="Gray"/>
+                                    <Label Text="{Binding Beschrijving}" FontSize="16" TextColor="Gray"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="Datum:  " FontSize="16" TextColor="Gray"/>
+                                    <Label Text="{Binding DatumToegevoegd, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" TextColor="Gray"/>
+                                </HorizontalStackLayout>
                             </StackLayout>
                         </Grid>
                     </ViewCell>
