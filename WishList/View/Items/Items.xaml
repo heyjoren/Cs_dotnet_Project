@@ -19,7 +19,6 @@
                                 <Label Text="{Binding Bedrijf}" FontSize="16"/>
                                 <Label Text="{Binding Beschrijving}" FontSize="16"/>
                                 <Label Text="{Binding Datum}" FontSize="16"/>
-
                             </StackLayout>
                         </Grid>
                     </ViewCell>
