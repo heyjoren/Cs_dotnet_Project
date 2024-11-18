@@ -62,7 +62,15 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public void OnDeleteButtonClicked (object sender, EventArgs e)
+    public void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        var item = button.BindingContext as Item;
+
+        MockDataStore.ObservableItems.Remove(item);
+    }
+
+    public void OnUpdateButtonClicked(object sender, EventArgs e)
     {
 
     }

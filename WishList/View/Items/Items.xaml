@@ -55,7 +55,8 @@
                                 </Button>
 
                                 <Button 
-                                    Text="Update"  
+                                    Text="Update"
+                                    Clicked="OnUpdateButtonClicked" 
                                     HorizontalOptions="Fill"
                                     Background="Blue"
                                     Margin="10,5,0,0"/>
