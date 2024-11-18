@@ -4,6 +4,15 @@
              x:Class="WishList.View.Items.Items"
              Title="Items">
     <VerticalStackLayout>
+
+        <Label x:Name="LabelItemsIsLeeg"
+           Text="Hier komen jouw items te staan, maar je hebt nog geen items."
+           FontSize="Large"
+           VerticalOptions="Center"
+           Margin="100"
+           HorizontalOptions="Center" 
+               />
+
         <ListView x:Name="ItemsListView">
             <ListView.ItemTemplate>
                 <DataTemplate>
