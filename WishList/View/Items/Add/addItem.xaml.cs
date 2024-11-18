@@ -73,7 +73,7 @@ namespace WishList.View.Items.Add
                 Debug.WriteLine(item);
 
                 MockDataStore.ItemsList.Add(item);
-                MockDataStore.ObservableItemsList.Add(item);
+                MockDataStore.ObservableItems.Add(item);
                 
                 NameEntry.Text = string.Empty;
                 PriceEntry.Text = string.Empty;
