@@ -61,5 +61,10 @@ public partial class Items : ContentPage, INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
+    public void OnDeleteButtonClicked (object sender, EventArgs e)
+    {
+
+    }
 }
 
