@@ -12,7 +12,7 @@ namespace WishList.Local_moc_data
     {
         public static List<Item> ItemsList { get; } = new List<Item>();
 
-        public static ObservableCollection<Item> ObservableItemsList { set; get; } = new ObservableCollection<Item>();
+        public static ObservableCollection<Item> ObservableItems { set; get; } = new ObservableCollection<Item>();
         //public static List<string> ItemsList { get; } = new List<string>();
     }    
 }
