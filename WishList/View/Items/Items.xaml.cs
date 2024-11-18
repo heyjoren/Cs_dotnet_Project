@@ -12,13 +12,21 @@ public partial class Items : ContentPage, INotifyPropertyChanged
 
     public Items()
 	{
-        Debug.WriteLine("Items.xaml.cs Items()");
-
         InitializeComponent();
 
         ItemsListView.ItemsSource = MockDataStore.ObservableItems;
 
-//On load controlleren of het leeg is
+        //Test
+        Item testItem = new Item();
+        testItem.Naam = "test";
+        testItem.Bedrag = 5;
+        testItem.Bedrijf = "test";
+
+        Debug.WriteLine(testItem);
+        MockDataStore.ObservableItems.Add(testItem);
+        //TEST tot hier
+
+        //On load controlleren of het leeg is
         if (!MockDataStore.ObservableItems.Any())
         {
             ItemsLeegVisibility = true;
