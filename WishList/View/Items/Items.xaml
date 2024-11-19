@@ -11,7 +11,7 @@
            Margin="100"
            HorizontalOptions="Center"/>
 
-            <ListView x:Name="ItemsListView">
+            <ListView x:Name="ItemsListView" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
