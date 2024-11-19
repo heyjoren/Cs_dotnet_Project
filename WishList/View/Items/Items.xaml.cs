@@ -75,28 +75,31 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         {
             ItemsLeegVisibility = true;
             LabelItemsIsLeeg.IsVisible = true;
+            ItemsListView.IsVisible = false;
 
         }
         else
         {
             ItemsLeegVisibility = false;
             LabelItemsIsLeeg.IsVisible = false;
+            ItemsListView.IsVisible = true;
+
         }
 
-// on item change controleren.
+        // on item change controleren.
         MockDataStore.ObservableItems.CollectionChanged += (sender, e) =>
         {
             if (!MockDataStore.ObservableItems.Any())
             {
                 ItemsLeegVisibility = true;
                 LabelItemsIsLeeg.IsVisible = true;
-
+                ItemsListView.IsVisible = false;
             }
             else
             {
                 ItemsLeegVisibility = false;
                 LabelItemsIsLeeg.IsVisible = false;
-
+                ItemsListView.IsVisible = true;
             }
         };
 

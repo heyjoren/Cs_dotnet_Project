@@ -14,7 +14,7 @@
            FontSize="Large"
            VerticalOptions="Center"
            Margin="100"
-           HorizontalOptions="Center" />
+           HorizontalOptions="Center"/>
 
             <!--<ListView x:Name="ItemsListView" HasUnevenRows="True" SeparatorVisibility="Default" VerticalOptions="Fill"
             HeightRequest="{OnIdiom Desktop={OnPlatform WinUI={StaticResource WindowHeight}}, 
