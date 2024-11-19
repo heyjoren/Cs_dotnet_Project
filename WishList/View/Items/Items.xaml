@@ -23,6 +23,10 @@
                     <ViewCell>
                         <VerticalStackLayout>
                             <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -49,7 +53,7 @@
                                         <Label Text="{Binding DatumToegevoegd, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" TextColor="Gray"/>
                                     </HorizontalStackLayout>
                                 </StackLayout>
-                                <StackLayout Grid.Column="1">
+                                <StackLayout x:Name="ButtonStack" Grid.Column="1">
                                     <Button 
                                         Text="Delete" 
                                         Clicked="OnDeleteButtonClicked" 
@@ -66,6 +70,27 @@
                                         Background="Blue"
                                         Margin="10,5,0,0"/>
                                 </StackLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState Name="Wide">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="500"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Property="Grid.ColumnDefinitions" Value="3*, *"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState Name="Narrow">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="0"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter TargetName="ButtonStack" Property="Grid.Row" Value="1"/>
+                                                <Setter TargetName="ButtonStack" Property="Grid.Column" Value="0"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
                             </Grid>
                             <BoxView 
                             Color="Gray"
