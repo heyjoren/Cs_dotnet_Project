@@ -13,7 +13,11 @@
            HorizontalOptions="Center" 
                />
 
-        <ListView x:Name="ItemsListView">
+
+
+        <ListView x:Name="ItemsListView" HasUnevenRows="True" SeparatorVisibility="Default" VerticalOptions="Fill"
+          HeightRequest="{OnIdiom Desktop={OnPlatform Default={StaticResource WindowHeight}}, 
+            Phone={OnPlatform Android={StaticResource WindowHeight}}}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
