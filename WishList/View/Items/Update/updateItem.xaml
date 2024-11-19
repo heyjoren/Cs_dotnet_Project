@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="WishList.View.Items.Update.updateItem"
+             Color="WhiteSmoke"
+             Size="300,280">
+    
+    <VerticalStackLayout>
+        <Label Text="Update Item" FontSize="20"/>
+
+        <HorizontalStackLayout Spacing="5" Margin="0,0,0,5">
+            <Label Text="Naam:  " FontSize="16" />
+            <Entry x:Name="NameEntry" Text="{Binding Naam}" Placeholder="Name" HorizontalOptions="FillAndExpand"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="5" Margin="0,0,0,5">
+            <Label Text="Bedrag:  " FontSize="16" />
+            <Entry x:Name="PriceEntry" Text="{Binding Bedrag}" Placeholder="Price"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="5" Margin="0,0,0,5">
+            <Label Text="Bedrijf:  " FontSize="16" />
+            <Entry x:Name="ManufacturerEntry" Text="{Binding Bedrijf}" Placeholder="Manufacturer"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="5" Margin="0,0,0,5">
+            <Label Text="Beschrijving:  " FontSize="16"/>
+            <Editor x:Name="DescriptionEditor" Text="{Binding Beschrijving}" Placeholder="Description"/>
+        </HorizontalStackLayout>
+        <Button Text="Toevoegen" BackgroundColor="Lime" TextColor="Black" Clicked="onSaveClicked"/>
+    </VerticalStackLayout>
+
+</toolkit:Popup>
