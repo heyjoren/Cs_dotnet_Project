@@ -3,49 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WishList.View.Items.Items"
              Title="Items">
-    <VerticalStackLayout>
-
+    <Grid>
         <Label x:Name="LabelItemsIsLeeg"
            Text="Hier komen jouw items te staan, maar je hebt nog geen items."
            FontSize="Large"
            VerticalOptions="Center"
            Margin="100"
-           HorizontalOptions="Center" 
-               />
+           HorizontalOptions="Center"/>
 
-        <ListView x:Name="ItemsListView">
-            <ListView.ItemTemplate>
+            <ListView x:Name="ItemsListView" HasUnevenRows="True">
+                <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <VerticalStackLayout>
                             <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
-                                    <HorizontalStackLayout Spacing="5">
+                                    <StackLayout Spacing="5" Orientation="Horizontal">
                                         <Label Text="Naam:  " FontSize="16" />
                                         <Label Text="{Binding Naam}" FontSize="16"/>
-                                    </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="5">
+                                    </StackLayout>
+                                    <StackLayout Spacing="5" Orientation="Horizontal">
                                         <Label Text="Bedrag:  " FontSize="16" />
                                         <Label Text="{Binding Bedrag}" FontSize="16"/>
-                                    </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="5">
+                                    </StackLayout>
+                                    <StackLayout Spacing="5" Orientation="Horizontal">
                                         <Label Text="Bedrijf:  " FontSize="16" />
                                         <Label Text="{Binding Bedrijf}" FontSize="16"/>
-                                    </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="5" IsVisible="{Binding Beschrijving, Converter={StaticResource StringNotEmptyConverter}}">
+                                    </StackLayout>
+                                    <StackLayout Spacing="5" Orientation="Horizontal"
+                                                 IsVisible="{Binding Beschrijving, Converter={StaticResource StringNotEmptyConverter}}">
                                         <Label Text="Beschrijving:  " FontSize="16" TextColor="Gray"/>
-                                        <Label Text="{Binding Beschrijving}" FontSize="16" TextColor="Gray"/>
-                                    </HorizontalStackLayout>
-                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="{Binding Beschrijving}" FontSize="16" TextColor="Gray" 
+                                               LineBreakMode="WordWrap" HorizontalOptions="FillAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Spacing="5" Orientation="Horizontal">
                                         <Label Text="Datum:  " FontSize="16" TextColor="Gray"/>
                                         <Label Text="{Binding DatumToegevoegd, StringFormat='{0:dd/MM/yyyy}'}" FontSize="16" TextColor="Gray"/>
-                                    </HorizontalStackLayout>
+                                    </StackLayout>
                                 </StackLayout>
-                                <StackLayout Grid.Column="1">
+                                <StackLayout x:Name="ButtonStack" Grid.Column="1" HorizontalOptions="FillAndExpand">
                                     <Button 
                                         Text="Delete" 
                                         Clicked="OnDeleteButtonClicked" 
@@ -62,6 +66,25 @@
                                         Background="Blue"
                                         Margin="10,5,0,0"/>
                                 </StackLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState Name="Wide">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="500"/>
+                                            </VisualState.StateTriggers>
+                                        </VisualState>
+                                        <VisualState Name="Narrow">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="0"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter TargetName="ButtonStack" Property="Grid.Row" Value="1"/>
+                                                <Setter TargetName="ButtonStack" Property="Grid.Column" Value="0"/>
+                                                <Setter TargetName="ButtonStack" Property="HorizontalOptions" Value="FillAndExpand"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
                             </Grid>
                             <BoxView 
                             Color="Gray"
@@ -72,5 +95,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
