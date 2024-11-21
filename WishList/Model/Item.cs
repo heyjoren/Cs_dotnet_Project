@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WishList.Model
 {
-    public class Item
+    public class Item: INotifyPropertyChanged
     {
         private static int currentId = 0;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public int Id { get; private set; }
         public string Naam { set; get; }
         public float Bedrag { set; get; }

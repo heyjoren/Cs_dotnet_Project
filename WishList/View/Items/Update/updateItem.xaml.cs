@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Views;
 using WishList.Model;
+using WishList.Local_moc_data;
 
 namespace WishList.View.Items.Update
 {
@@ -8,6 +9,7 @@ namespace WishList.View.Items.Update
         private Item _item;
         public updateItem(Item item)
         {
+
             InitializeComponent();
             _item = item;
             BindingContext = item;
@@ -15,9 +17,14 @@ namespace WishList.View.Items.Update
 
         async public void onSaveClicked(object sender, EventArgs e)
         {
+            var item = (Item)BindingContext;
+            item.Naam = NameEntry.Text;
+            item.Bedrag = float.Parse(PriceEntry.Text);
+            item.Bedrijf = ManufacturerEntry.Text;
+            item.Beschrijving = DescriptionEditor.Text;
+
             var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
             await CloseAsync(_item, cts.Token);
-            //Close();
         }
     }
     
