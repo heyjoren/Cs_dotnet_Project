@@ -15,7 +15,7 @@
         </HorizontalStackLayout>
         <HorizontalStackLayout Spacing="5" Margin="0,0,0,5">
             <Label Text="Bedrag:  " FontSize="16" />
-            <Entry x:Name="PriceEntry" Text="{Binding Bedrag}" Placeholder="Price"/>
+            <Entry x:Name="PriceEntry" Text="{Binding Bedrag}" Placeholder="Price" Keyboard="Numeric"/>
         </HorizontalStackLayout>
         <HorizontalStackLayout Spacing="5" Margin="0,0,0,5">
             <Label Text="Bedrijf:  " FontSize="16" />

@@ -117,14 +117,17 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         MockDataStore.ObservableItems.Remove(item);
     }
 
-    public void OnUpdateButtonClicked(object sender, EventArgs e)
+    public async void OnUpdateButtonClicked(object sender, EventArgs e)
     {
         Debug.WriteLine("Items.xaml.cs update button klicked");
         var button = sender as Button;
         var item = button.BindingContext as Item;
+        Debug.WriteLine(item);
         var popup = new updateItem(item);
-        this.ShowPopup(popup);
-        //await this.ShowPopupAsync(popup);
+        var changed = await this.ShowPopupAsync(popup);
+        Debug.WriteLine(changed as Item);
+
+        MockDataStore.ObservableItems[item.Id - 1] = changed as Item;
     }
 }
 
