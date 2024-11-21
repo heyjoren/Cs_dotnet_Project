@@ -6,6 +6,8 @@ using WishList.Model;
 using WishList.View.Items.Update;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Maui.Core;
+using Microsoft.Maui.Controls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WishList.View.Items;
 public partial class Items : ContentPage, INotifyPropertyChanged
@@ -130,4 +132,3 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         MockDataStore.ObservableItems[item.Id - 1] = changed as Item;
     }
 }
-
