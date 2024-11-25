@@ -16,7 +16,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <VerticalStackLayout>
-                            <Grid Padding="10" x:Name="ListViewGrid">
+                            <Grid Padding="10" x:Name="test">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -27,8 +27,7 @@
 
                                     <ColumnDefinition Width="{OnIdiom Desktop='3*', Phone='*'}"/>
                                     <ColumnDefinition Width="{OnIdiom Desktop='*', Phone='0'}"/>
-                                    
-                                    
+
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
                                     <StackLayout Spacing="5" Orientation="Horizontal">
