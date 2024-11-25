@@ -41,12 +41,19 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<!--<MauiIcon Include="Resources\Raw\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />-->
-		<MauiIcon Include="Resources\AppIcon\wishlist_no_background.png"
-              BaseSize="512,512"
-              ForegroundFile="Resources\AppIcon\blank.png"
-              ForegroundScale="0.65"
-              Color="#FFFFFF"
-              TintColor="#FFFFFF" />
+		
+			<MauiIcon Include="Resources\AppIcon\wishlist_no_background.png" BaseSize="512,512" ForegroundFile="Resources\AppIcon\blank.png" ForegroundScale="0.65" Color="#FFFFFF" TintColor="#FFFFFF" />
+		
+    <!-- Android-specific icon mappings -->
+    <AndroidResource Include="Resources\AppIcon\wishlist_no_background.png">
+        <Link>Resources\mipmap\appicon.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="Resources\AppIcon\wishlist_no_background.png">
+        <Link>Resources\mipmap\appicon_round.png</Link>
+    </AndroidResource>
+
+		<!--<MauiIcon Include="Resources\AppIcon\wishlist_no_background.png"/>-->
+
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
