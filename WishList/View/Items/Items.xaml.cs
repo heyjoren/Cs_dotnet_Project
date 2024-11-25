@@ -6,6 +6,11 @@ using WishList.Model;
 using WishList.View.Items.Update;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Maui.Core;
+using Microsoft.Maui.Controls;
+using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.ExceptionServices;
+using System.Collections.Generic;
+using CommunityToolkit.Maui.Extensions;
 
 namespace WishList.View.Items;
 public partial class Items : ContentPage, INotifyPropertyChanged
@@ -125,9 +130,14 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         Debug.WriteLine(item);
         var popup = new updateItem(item);
         var changed = await this.ShowPopupAsync(popup);
-        Debug.WriteLine(changed as Item);
 
-        MockDataStore.ObservableItems[item.Id - 1] = changed as Item;
+        if (changed is Item changedItem)
+        {
+            MockDataStore.ObservableItems[item.Id - 1] = changedItem;
+        }
+        else
+        {
+            Debug.WriteLine("No valid item was returned from the popup.");
+        }
     }
 }
-
