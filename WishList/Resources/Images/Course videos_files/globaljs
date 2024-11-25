@@ -1,0 +1,52 @@
+(() => {
+    console.debug("Schoolyear global JS loaded");
+
+    function findSourceIframe(event) {
+        return [...document.getElementsByTagName('iframe')].find(f => f.contentWindow === event.source);
+    }
+
+// NOTE: ENV is some data that that Canvas includes in the page when it loads
+
+    const handlers = {
+        'schoolyear.destroyIframe': (_, e) => {
+            const frame = findSourceIframe(e);
+            if (frame) frame.remove();
+        },
+
+        'schoolyear.resizeIframe': (data, e) => {
+            const frame = findSourceIframe(e);
+            if (frame) {
+                if ('width' in data) frame.style['width'] = data['width'];
+                if ('height' in data) frame.style['height'] = data['height'];
+            }
+        },
+
+        'schoolyear.refreshPage': () => {
+            location.reload();
+        },
+
+        'schoolyear.removeTakeQuizLink': () => {
+            document.querySelector('div[class="take_quiz_button"]')?.remove();
+        }
+    };
+
+    window.addEventListener(
+        "message",
+        async (event) => {
+            const handler = handlers[event.data.type];
+            if (!handler) {
+                console.debug(`No handler for ${event.data.type}`);
+                return;
+            }
+
+            const response = await handler(event.data.data, event);
+
+            // Send back a respsonse to the LTI Tool
+            event.source.postMessage(
+                {type: event.data.type, data: response},
+                event.origin
+            );
+        },
+        false
+    );
+})()
