@@ -14,17 +14,24 @@ namespace ASPNET.Controllers
     {
         Mock mock = new Mock();
 
+        private readonly IRepo repo;
+
+        public itemController(IRepo _repo)
+        {
+            repo = _repo;
+        }
+
         [HttpGet]
         public ActionResult GetAllItems()
         {
-            return Ok(mock.GetAllItems());
+            return Ok(repo.GetAllItems());
         }
 
         [HttpGet("{id}")]       //sub route
         public ActionResult GetItemById(int id)
         {
             
-            return Ok(mock.GetItemById(id));
+            return Ok(repo.GetItemById(id));
         }
 
 

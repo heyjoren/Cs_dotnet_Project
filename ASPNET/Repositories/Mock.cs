@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ASPNET.Models;
+using ASPNET.Repositories;
 
 namespace ASPNET.Repositories
 {
-    public class Mock
+    public class Mock : IRepo
     {
         List<Item> itemsList = new List<Item>();
 
