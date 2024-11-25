@@ -1,6 +1,6 @@
-@ASPNet_HostAddress = http://localhost:5208
+@ASPNET_HostAddress = http://localhost:5248
 
-GET {{ASPNet_HostAddress}}/weatherforecast/
+GET {{ASPNET_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

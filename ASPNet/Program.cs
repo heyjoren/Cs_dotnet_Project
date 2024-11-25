@@ -1,6 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// builder.Services.AddControllers();  //build de router
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -12,7 +15,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection();      //van http naar https    //mag comment worden
 
 var summaries = new[]
 {
@@ -32,6 +35,9 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+// app.UseAuthorization();      //gebruik van tokers
+// app.MapControllers();        //build de routes in de router
 
 app.Run();
 
