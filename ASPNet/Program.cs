@@ -9,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();  //build de router
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// builder.Services.AddOpenApi();
 
-// builder.Services.AddScoped<IRepo, Mock>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data    naar mock data test
-builder.Services.AddScoped<IRepo, MySQLRepo>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data         naar sql
+builder.Services.AddScoped<IRepo, Mock>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data    naar mock data test
+// builder.Services.AddScoped<IRepo, MySQLRepo>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data         naar sql
 
 string connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];    // gaat in de appsettings kijken
 
@@ -28,10 +28,10 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+// if (app.Environment.IsDevelopment())
+// {
+//     app.MapOpenApi();
+// }
 
 app.UseHttpsRedirection();      //van http naar https    //mag comment worden
 
