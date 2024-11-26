@@ -45,9 +45,10 @@ namespace WishList.Services
         {
             // Controleer het platform
 #if ANDROID
-            Debug.WriteLine("test on Android");
+            Debug.WriteLine("ApiMockData test on Android");
             if (IsEmulator())
             {
+                Debug.WriteLine("ApiMockData test emulator");
                 return "http://10.0.2.2:5248/";
             }
             else
@@ -55,7 +56,7 @@ namespace WishList.Services
                 return "http://192.168.56.1:5248/";
             }
 #elif WINDOWS
-            Debug.WriteLine("test on Windows");
+            Debug.WriteLine("ApiMockData test on Windows");
             return "http://localhost:5248/";
 #else
             return "http://localhost:5248/";
