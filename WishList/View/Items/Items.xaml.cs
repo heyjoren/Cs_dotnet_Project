@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using WishList.Local_moc_data;
@@ -6,25 +5,31 @@ using WishList.Model;
 using WishList.View.Items.Update;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Maui.Core;
-using Microsoft.Maui.Controls;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.ExceptionServices;
-using System.Collections.Generic;
-using CommunityToolkit.Maui.Extensions;
+using WishList.Services;
+using System.Collections.ObjectModel;
+
 
 namespace WishList.View.Items;
 public partial class Items : ContentPage, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
+
     public bool ItemsLeegVisibility { set; get; } = false;
 
     private readonly IPopupService popupService;
+
+    //api mock data
+    private readonly ApiMockData apiMockData = new ApiMockData();
 
     public Items()
 	{
         InitializeComponent();
 
-        ItemsListView.ItemsSource = MockDataStore.ObservableItems;
+        //Locale mock data 
+        //ItemsListView.ItemsSource = MockDataStore.ObservableItems;
+
+        //api mock data
+        LoadItemsFromApi();
 
         this.popupService = popupService;
 
@@ -92,5 +97,11 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         {
             Debug.WriteLine("No valid item was returned from the popup.");
         }
+    }
+
+    private async void LoadItemsFromApi()
+    {
+        var items = await apiMockData.GetAllItems();
+        ItemsListView.ItemsSource = new ObservableCollection<Item>(items);
     }
 }

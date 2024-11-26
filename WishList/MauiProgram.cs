@@ -3,6 +3,7 @@ using CommunityToolkit.Maui;
 using Microsoft.Maui.LifecycleEvents;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using WishList.Services;
 
 namespace WishList
 {
@@ -23,7 +24,6 @@ namespace WishList
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
             return builder.Build();
         }
     }
