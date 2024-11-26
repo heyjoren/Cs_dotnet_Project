@@ -18,6 +18,11 @@ namespace ASPNET.Repositories
             itemsList.Add(new Item{Id= 3, Naam = "test3", Bedrag =3, Bedrijf = "test3"});
         }
 
+        public void AddItem(Item i)
+        {
+            itemsList.Add(i);
+        }
+
         public IEnumerable<Item> GetAllItems()
         {
             return itemsList;
@@ -28,6 +33,20 @@ namespace ASPNET.Repositories
             Item _item = itemsList.FirstOrDefault<Item>(test => test.Id == id);
             return _item;
         }
-        
+
+        public void SaveChanges ()
+        {
+            
+        }
+
+        public void UpdateItem(Item i)
+        {
+            
+        }
+
+        public void DeleteItem(Item i)
+        {
+            
+        }
     }
 }

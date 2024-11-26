@@ -2,8 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPNET.dro;
+using ASPNET.dto;
 using ASPNET.Models;
 using ASPNET.Repositories;
+using AutoMapper;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASPNET.Controllers
@@ -15,23 +19,70 @@ namespace ASPNET.Controllers
         Mock mock = new Mock();
 
         private readonly IRepo repo;
+        private readonly IMapper mapper;
 
-        public itemController(IRepo _repo)
+        public itemController(IRepo _repo, IMapper _mapper)
         {
             repo = _repo;
+            mapper = _mapper;
         }
 
         [HttpGet]
         public ActionResult GetAllItems()
         {
-            return Ok(repo.GetAllItems());
+            return Ok(mapper.Map<IEnumerable<ItemReadDto>>(repo.GetAllItems()));
         }
 
-        [HttpGet("{id}")]       //sub route
+        [HttpGet("{id}", Name ="GetItemById")]       //sub route
         public ActionResult GetItemById(int id)
         {
             
-            return Ok(repo.GetItemById(id));
+            return Ok(mapper.Map<Item>(repo.GetItemById(id)));
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateItem(itemWriteDto i)
+        {
+            var item = mapper.Map<Item>(i);
+
+            repo.AddItem(item);
+            repo.SaveChanges();
+
+            return CreatedAtRoute(nameof(GetItemById), new {Id = item.Id}, item);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateItem(int id, ItemUpdateDto i)
+        {
+            var bestaandItem = repo.GetItemById(id);
+            if(bestaandItem == null)
+            {
+                return NotFound();
+            }
+            
+            mapper.Map(i, bestaandItem);
+
+            repo.UpdateItem(bestaandItem);
+
+            repo.SaveChanges();
+
+            return Ok();
+        }
+
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteItem(int id)
+        {
+            var bestaandItem = repo.GetItemById(id);
+            if(bestaandItem == null)
+            {
+                return NotFound();
+            }
+
+            repo.DeleteItem(bestaandItem);
+            repo.SaveChanges();
+            return Ok();
         }
 
 
