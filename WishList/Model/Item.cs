@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WishList.Model
@@ -13,11 +14,22 @@ namespace WishList.Model
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        [JsonPropertyName("id")]
         public int Id { get; private set; }
+
+        [JsonPropertyName("naam")]
         public string Naam { set; get; }
+
+        [JsonPropertyName("bedrag")]
         public float Bedrag { set; get; }
+
+        [JsonPropertyName("beschrijving")]
         public string Beschrijving { set; get; }
+
+        [JsonPropertyName("bedrijf")]
         public string Bedrijf { set; get; }
+
+
         public DateTime DatumToegevoegd { set; get; }
 
         public Item()

@@ -23,7 +23,12 @@ namespace WishList.Services
                 // Gebruik een platform-specifieke URL
                 string apiUrl = GetApiUrl();
                 apiUrl += "api/item/";
+                Debug.WriteLine("ApiMockData  apiUrl: " + apiUrl);
+
                 string response = await client.GetStringAsync(apiUrl);
+
+                Debug.WriteLine("ApiMockData  respnose: " + response);
+                Debug.WriteLine("ApiMockData  JsonSerializer.Deserialize<List<Item>>(response): " + (JsonSerializer.Deserialize<List<Item>>(response)));
 
                 return JsonSerializer.Deserialize<List<Item>>(response);
             }
