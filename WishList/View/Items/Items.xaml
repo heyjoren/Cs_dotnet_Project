@@ -22,12 +22,8 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <!--<ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>-->
-
                                     <ColumnDefinition Width="{OnIdiom Desktop='3*', Phone='*'}"/>
                                     <ColumnDefinition Width="{OnIdiom Desktop='*', Phone='0'}"/>
-
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
                                     <StackLayout Spacing="5" Orientation="Horizontal">

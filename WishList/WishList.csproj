@@ -81,10 +81,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModel\Items\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="View\Items\Add\addItem.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

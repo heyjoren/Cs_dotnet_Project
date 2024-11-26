@@ -23,7 +23,6 @@ namespace WishList.Services
                 // Gebruik een platform-specifieke URL
                 string apiUrl = GetApiUrl();
                 apiUrl += "api/item/";
-                Debug.WriteLine("ApiMockData  apiUrl: " + apiUrl);
 
                 string response = await client.GetStringAsync(apiUrl);
 
@@ -45,10 +44,8 @@ namespace WishList.Services
         {
             // Controleer het platform
 #if ANDROID
-            Debug.WriteLine("ApiMockData test on Android");
             if (IsEmulator())
             {
-                Debug.WriteLine("ApiMockData test emulator");
                 return "http://10.0.2.2:5248/";
             }
             else
