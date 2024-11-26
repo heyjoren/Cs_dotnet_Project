@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Diagnostics;
 
+
 namespace WishList.Services
 {
     internal class ApiMockData : IDataStore
@@ -19,28 +20,54 @@ namespace WishList.Services
             HttpClient client = new HttpClient();
             try
             {
-                string responseLocalHost = await client.GetStringAsync("http://localhost:5248/api/item/");
-
-                Debug.WriteLine("responseLocalHost");
-                Debug.WriteLine(responseLocalHost);
-                Debug.WriteLine("JsonSerializer.Deserialize<List<Item>>(responseLocalHost)");
-                Debug.WriteLine(JsonSerializer.Deserialize<List<Item>>(responseLocalHost));
-
-                return JsonSerializer.Deserialize<List<Item>>(responseLocalHost);
-            }
-            catch
-            {
-                string response = await client.GetStringAsync("http://10.0.2.2:5248/api/item/");
-
-                Debug.WriteLine("response");
-                Debug.WriteLine(response);
-                Debug.WriteLine("JsonSerializer.Deserialize<List<Item>>(response)");
-                Debug.WriteLine(JsonSerializer.Deserialize<List<Item>>(response));
+                // Gebruik een platform-specifieke URL
+                string apiUrl = GetApiUrl();
+                apiUrl += "api/item/";
+                string response = await client.GetStringAsync(apiUrl);
 
                 return JsonSerializer.Deserialize<List<Item>>(response);
-
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine("ApiMockData.cs");
+                Debug.WriteLine($"Error: {ex.Message}");
+                return new List<Item>();
             }
         }
-    }
 
+        // Bepaal het juiste URL op basis van platform en apparaat
+        private string GetApiUrl()
+        {
+            // Controleer het platform
+#if ANDROID
+            Debug.WriteLine("test on Android");
+            if (IsEmulator())
+            {
+                return "http://10.0.2.2:5248/";
+            }
+            else
+            {
+                return "http://192.168.56.1:5248/";
+            }
+#elif WINDOWS
+            Debug.WriteLine("test on Windows");
+            return "http://localhost:5248/";
+#else
+            return "http://localhost:5248/";
+#endif
+        }
+
+        private bool IsEmulator()
+        {
+#if ANDROID
+            string model = Android.OS.Build.Model.ToLower();
+            string device = Android.OS.Build.Device.ToLower();
+
+            // Controleer de aanwezigheid van typische emulator-kenmerken
+            return model.Contains("sdk") && device.Contains("emu");
+#else
+            return false;
+#endif
+        }
+    }
 }
