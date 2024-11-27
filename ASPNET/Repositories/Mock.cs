@@ -46,14 +46,7 @@ namespace ASPNET.Repositories
 
         public void DeleteItem(Item i)
         {
-            Console.WriteLine("==Mock Delete api ==");
             itemsList.Remove(i);
-            
-            foreach (Item item in itemsList)
-            {
-                Console.WriteLine(item.Id);
-            }
-
         }
     }
 }

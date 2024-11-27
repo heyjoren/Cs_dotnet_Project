@@ -30,7 +30,7 @@ public class ItemViewModel : INotifyPropertyChanged
         ObservableItems.Clear();
         foreach (var item in items)
         {
-            Debug.WriteLine("ApiMockData test item: " + item);
+            //Debug.WriteLine("ApiMockData test item: " + item);
             ObservableItems.Add(item);
         }
         OnPropertyChanged(nameof(ObservableItems));
@@ -38,11 +38,8 @@ public class ItemViewModel : INotifyPropertyChanged
 
     private async void DeleteItem(Item item)
     {
-        Debug.WriteLine("ApiMockData test Delete");
-
-        //ObservableItems.Remove(item);
+        ObservableItems.Remove(item);
         await apiService.DeleteItem(item);
-        LoadItems();
         OnPropertyChanged(nameof(ObservableItems));
 
     }
