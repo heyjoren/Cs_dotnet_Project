@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ASPNET.dro;
@@ -9,6 +10,7 @@ using ASPNET.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace ASPNET.Controllers
 {
@@ -30,6 +32,11 @@ namespace ASPNET.Controllers
         [HttpGet]
         public ActionResult GetAllItems()
         {
+            var items = repo.GetAllItems();
+            foreach(Item item in items)
+            {
+                Console.WriteLine("item.id: " + item.Id);
+            }
             return Ok(mapper.Map<IEnumerable<ItemReadDto>>(repo.GetAllItems()));
         }
 
@@ -80,8 +87,10 @@ namespace ASPNET.Controllers
                 return NotFound();
             }
 
+
             repo.DeleteItem(bestaandItem);
             repo.SaveChanges();
+
             return Ok();
         }
 

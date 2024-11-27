@@ -26,8 +26,8 @@ namespace WishList.Services
 
                 string response = await client.GetStringAsync(apiUrl);
 
-                Debug.WriteLine("ApiMockData  respnose: " + response);
-                Debug.WriteLine("ApiMockData  JsonSerializer.Deserialize<List<Item>>(response): " + (JsonSerializer.Deserialize<List<Item>>(response)));
+                //Debug.WriteLine("ApiMockData  respnose: " + response);
+                //Debug.WriteLine("ApiMockData  JsonSerializer.Deserialize<List<Item>>(response): " + (JsonSerializer.Deserialize<List<Item>>(response)));
 
                 return JsonSerializer.Deserialize<List<Item>>(response);
             }
@@ -71,6 +71,25 @@ namespace WishList.Services
 #else
             return false;
 #endif
+        }
+        public async Task DeleteItem(Item item)
+        {
+            //Debug.WriteLine("ApiMockData.cs DeleteItem begin voor GetAllItems()");
+            //GetAllItems();
+            //Debug.WriteLine("ApiMockData.cs DeleteItem begin na GetAllItems()");
+            HttpClient client = new HttpClient();
+            string apiUrl = GetApiUrl() + "api/item/" + item.Id;
+
+            try
+            {
+                var response = await client.DeleteAsync(apiUrl);
+                Debug.WriteLine("ApiMockData  respnose: " + response);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error deleting item: {ex.Message}");
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace WishList.Model
         public event PropertyChangedEventHandler? PropertyChanged;
 
         [JsonPropertyName("id")]
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         [JsonPropertyName("naam")]
         public string Naam { set; get; }
@@ -34,8 +34,8 @@ namespace WishList.Model
 
         public Item()
         {
-            currentId++;
             Id = currentId;
+            currentId++;
             Naam = "";
             Bedrag = 0;
             Beschrijving = "";
@@ -45,8 +45,8 @@ namespace WishList.Model
 
         public Item(string _Naam, float _Bedrag, string _Beschrijving, string _Bedrijf)
         {
-            currentId++;
             Id = currentId;
+            currentId++;
             Naam = _Naam;
             Bedrag = _Bedrag;
             Beschrijving = _Beschrijving;
@@ -56,8 +56,8 @@ namespace WishList.Model
 
         public Item(string _Naam, float _Bedrag, string _Beschrijving, string _Bedrijf, DateTime _DatumToegevoegd)
         {
-            currentId++;
             Id = currentId;
+            currentId++;
             Naam = _Naam;
             Bedrag = _Bedrag;
             Beschrijving = _Beschrijving;

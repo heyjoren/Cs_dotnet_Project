@@ -66,17 +66,17 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         };
 
     }
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    //protected virtual void OnPropertyChanged(string propertyName)
+    //{
+    //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //}
 
     public void OnDeleteButtonClicked(object sender, EventArgs e)
     {
         var button = sender as Button;
         var item = button.BindingContext as Item;
 
-        viewModel.ObservableItems.Remove(item);
+        viewModel.DeleteCommand.Execute(item);
     }
 
     public async void OnUpdateButtonClicked(object sender, EventArgs e)

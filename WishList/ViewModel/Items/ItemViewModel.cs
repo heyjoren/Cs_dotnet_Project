@@ -7,16 +7,17 @@ using WishList.Services;
 
 public class ItemViewModel : INotifyPropertyChanged
 {
-    private readonly ApiMockData _apiService;
+    private readonly ApiMockData apiService = new ApiMockData();
     public ObservableCollection<Item> ObservableItems { get; set; }
     public ICommand DeleteCommand { get; }
     public ICommand UpdateCommand { get; }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
+    //public IDataStore DataStore => DependencyService.Get<IDataStore>();
+
     public ItemViewModel()
     {
-        _apiService = new ApiMockData();
         ObservableItems = new ObservableCollection<Item>();
         DeleteCommand = new Command<Item>(DeleteItem);
         UpdateCommand = new Command<Item>(UpdateItem);
@@ -25,19 +26,25 @@ public class ItemViewModel : INotifyPropertyChanged
 
     private async void LoadItems()
     {
-        var items = await _apiService.GetAllItems();
+        var items = await apiService.GetAllItems();
         ObservableItems.Clear();
         foreach (var item in items)
         {
+            Debug.WriteLine("ApiMockData test item: " + item);
             ObservableItems.Add(item);
-            Debug.WriteLine("ItemViewModel.cs items: " + item);
         }
         OnPropertyChanged(nameof(ObservableItems));
     }
 
-    private void DeleteItem(Item item)
+    private async void DeleteItem(Item item)
     {
-        ObservableItems.Remove(item);
+        Debug.WriteLine("ApiMockData test Delete");
+
+        //ObservableItems.Remove(item);
+        await apiService.DeleteItem(item);
+        LoadItems();
+        OnPropertyChanged(nameof(ObservableItems));
+
     }
 
     private async void UpdateItem(Item item)
