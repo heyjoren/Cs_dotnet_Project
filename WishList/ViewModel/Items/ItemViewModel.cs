@@ -46,7 +46,12 @@ public class ItemViewModel : INotifyPropertyChanged
 
     private async void UpdateItem(Item item)
     {
-        // Implement update logic
+        Debug.WriteLine("updateViewModel");
+        //viewModel.ObservableItems[item.Id - 1] = item;
+
+        await apiService.UpdateItem(item);
+        LoadItems();
+        OnPropertyChanged(nameof(ObservableItems));
     }
 
     protected virtual void OnPropertyChanged(string propertyName)

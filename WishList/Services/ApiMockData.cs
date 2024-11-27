@@ -26,9 +26,7 @@ namespace WishList.Services
 
                 string response = await client.GetStringAsync(apiUrl);
 
-                //Debug.WriteLine("ApiMockData  respnose: " + response);
-                //Debug.WriteLine("ApiMockData  JsonSerializer.Deserialize<List<Item>>(response): " + (JsonSerializer.Deserialize<List<Item>>(response)));
-
+                
                 return JsonSerializer.Deserialize<List<Item>>(response);
             }
             catch(Exception ex)
@@ -53,7 +51,6 @@ namespace WishList.Services
                 return "http://192.168.56.1:5248/";
             }
 #elif WINDOWS
-            Debug.WriteLine("ApiMockData test on Windows");
             return "http://localhost:5248/";
 #else
             return "http://localhost:5248/";
@@ -74,16 +71,30 @@ namespace WishList.Services
         }
         public async Task DeleteItem(Item item)
         {
-            //Debug.WriteLine("ApiMockData.cs DeleteItem begin voor GetAllItems()");
-            //GetAllItems();
-            //Debug.WriteLine("ApiMockData.cs DeleteItem begin na GetAllItems()");
             HttpClient client = new HttpClient();
             string apiUrl = GetApiUrl() + "api/item/" + item.Id;
 
             try
             {
                 var response = await client.DeleteAsync(apiUrl);
-                Debug.WriteLine("ApiMockData  respnose: " + response);
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error deleting item: {ex.Message}");
+            }
+        }
+
+        public async Task UpdateItem(Item item)
+        {
+            HttpClient client = new HttpClient();
+            string apiUrl = GetApiUrl() + "api/item/" + item.Id;
+
+            try
+            {
+                var json = JsonSerializer.Serialize(item);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PutAsync(apiUrl, content);
 
             }
             catch (Exception ex)

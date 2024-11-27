@@ -88,9 +88,12 @@ public partial class Items : ContentPage, INotifyPropertyChanged
         var popup = new updateItem(item);
         var changed = await this.ShowPopupAsync(popup);
 
+
         if (changed is Item changedItem)
         {
-            viewModel.ObservableItems[item.Id - 1] = changedItem;
+            viewModel.UpdateCommand.Execute(changed);
+
+            //viewModel.ObservableItems[item.Id - 1] = changedItem;
         }
         else
         {

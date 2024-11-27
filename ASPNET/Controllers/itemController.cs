@@ -32,6 +32,11 @@ namespace ASPNET.Controllers
         [HttpGet]
         public ActionResult GetAllItems()
         {
+            var items = repo.GetAllItems();
+            foreach(Item item in items)
+            {
+                Console.WriteLine("item.id: " + item.Id);
+            }
             return Ok(mapper.Map<IEnumerable<ItemReadDto>>(repo.GetAllItems()));
         }
 
