@@ -26,10 +26,8 @@ public class ItemViewModel : INotifyPropertyChanged
 
         MessagingCenter.Subscribe<WishList.Services.ApiMockData>(this, "ItemAdded", async (sender) =>
         {
-            Debug.WriteLine("MessageCenter received in ItemViewModel");
-            await Task.Delay(100);
+            //await Task.Delay(100);
             LoadItems();
-            Debug.WriteLine("Items reloaded after MessageCenter notification");
         });
     }
 
