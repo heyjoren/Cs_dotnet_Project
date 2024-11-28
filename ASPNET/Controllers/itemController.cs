@@ -40,6 +40,7 @@ namespace ASPNET.Controllers
                 Console.Write("item: ");
                 Console.Write("item.id: " + item.Id);
                 Console.Write(" item.naam: " + item.Naam);
+                Console.Write(" item.datum: " + item.DatumToegevoegd);
                 Console.Write("\n");
             }
             return Ok(mapper.Map<IEnumerable<ItemReadDto>>(repo.GetAllItems()));

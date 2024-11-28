@@ -26,7 +26,12 @@ namespace WishList.Services
 
                 string response = await client.GetStringAsync(apiUrl);
 
-                
+                Debug.WriteLine("response");
+                Debug.WriteLine(response);
+
+                Debug.WriteLine("JsonSerializer.Deserialize<List<Item>>(response)");
+                Debug.WriteLine(JsonSerializer.Deserialize<List<Item>>(response));
+
                 return JsonSerializer.Deserialize<List<Item>>(response);
             }
             catch(Exception ex)
@@ -120,7 +125,8 @@ namespace WishList.Services
                     item.Naam,
                     item.Bedrag,
                     item.Beschrijving,
-                    item.Bedrijf
+                    item.Bedrijf,
+                    item.DatumToegevoegd
                 };
 
                 var json = JsonSerializer.Serialize(itemToSend);

@@ -14,9 +14,9 @@ namespace ASPNET.Repositories
 
         public Mock()
         {
-            itemsList.Add(new Item{Id= 1, Naam = "test1", Bedrag =1, Bedrijf = "test1"});
-            itemsList.Add(new Item{Id= 2, Naam = "test2", Bedrag =2, Bedrijf = "test2", Beschrijving ="test2"});
-            itemsList.Add(new Item{Id= 3, Naam = "test3", Bedrag =3, Bedrijf = "test3"});
+            itemsList.Add(new Item{Id= 1, Naam = "test1", Bedrag =1, Bedrijf = "test1", DatumToegevoegd = DateTime.Now});
+            itemsList.Add(new Item{Id= 2, Naam = "test2", Bedrag =2, Bedrijf = "test2", Beschrijving ="test2", DatumToegevoegd = new DateTime(2024, 11, 26)});
+            itemsList.Add(new Item{Id= 3, Naam = "test3", Bedrag =3, Bedrijf = "test3", DatumToegevoegd = new DateTime(2024, 11, 20, 14, 30, 0)});
         }
 
         public void AddItem(Item i)

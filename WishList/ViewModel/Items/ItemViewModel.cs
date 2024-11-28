@@ -33,11 +33,12 @@ public class ItemViewModel : INotifyPropertyChanged
 
     private async void LoadItems()
     {
+        Debug.WriteLine("===LoadItem===");
         var items = await apiService.GetAllItems();
         ObservableItems.Clear();
         foreach (var item in items)
         {
-            //Debug.WriteLine("ApiMockData test item: " + item);
+            Debug.WriteLine("ApiMockData test item: " + item);
             ObservableItems.Add(item);
         }
         OnPropertyChanged(nameof(ObservableItems));

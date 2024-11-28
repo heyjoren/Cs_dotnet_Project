@@ -24,12 +24,12 @@ namespace WishList.Model
         public float Bedrag { set; get; }
 
         [JsonPropertyName("beschrijving")]
-        public string Beschrijving { set; get; }
+        public string? Beschrijving { set; get; }
 
         [JsonPropertyName("bedrijf")]
         public string Bedrijf { set; get; }
 
-
+        [JsonPropertyName("datumToegevoegd")]
         public DateTime DatumToegevoegd { set; get; }
 
         public Item()
@@ -61,6 +61,15 @@ namespace WishList.Model
             Naam = _Naam;
             Bedrag = _Bedrag;
             Beschrijving = _Beschrijving;
+            Bedrijf = _Bedrijf;
+            DatumToegevoegd = _DatumToegevoegd;
+        }
+        public Item(string _Naam, float _Bedrag, string _Bedrijf, DateTime _DatumToegevoegd)
+        {
+            Id = currentId;
+            currentId++;
+            Naam = _Naam;
+            Bedrag = _Bedrag;
             Bedrijf = _Bedrijf;
             DatumToegevoegd = _DatumToegevoegd;
         }

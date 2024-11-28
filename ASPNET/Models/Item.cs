@@ -12,5 +12,6 @@ namespace ASPNET.Models
         public float Bedrag { set; get; }
         public string? Beschrijving { set; get; }
         public string Bedrijf { set; get; }
+        public DateTime DatumToegevoegd { set; get; }
     }
 }
