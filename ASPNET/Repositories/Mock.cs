@@ -41,13 +41,9 @@ namespace ASPNET.Repositories
 
         public void UpdateItem(Item i)
         {
-            Console.WriteLine("==UpdateItem Mock==");
-            itemsList[i.Id] = i;
-
-            foreach(Item item in itemsList)
-            {
-                Console.WriteLine(item.Id + " " + item.Naam + " " + item.Bedrag + " " + item.Bedrijf + " " + item.Beschrijving);
-            }
+            Console.WriteLine("=== Update ===");
+            Console.WriteLine("id: " + i.Id);
+            itemsList[i.Id - 1] = i;
         }
 
         public void DeleteItem(Item i)

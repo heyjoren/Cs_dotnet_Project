@@ -35,7 +35,10 @@ namespace ASPNET.Controllers
             var items = repo.GetAllItems();
             foreach(Item item in items)
             {
-                Console.WriteLine("item.id: " + item.Id);
+                Console.Write("item: ");
+                Console.Write("item.id: " + item.Id);
+                Console.Write(" item.naam: " + item.Naam);
+                Console.Write("\n");
             }
             return Ok(mapper.Map<IEnumerable<ItemReadDto>>(repo.GetAllItems()));
         }
@@ -49,8 +52,10 @@ namespace ASPNET.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateItem(itemWriteDto i)
+        public IActionResult AddItem(itemWriteDto i)
         {
+            Console.WriteLine("===Item===");
+            Console.WriteLine("Item: " + i.Naam + " " + i.Bedrag);
             var item = mapper.Map<Item>(i);
 
             repo.AddItem(item);

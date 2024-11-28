@@ -28,7 +28,6 @@ builder.Services.AddLogging(builder =>
     builder.AddDebug();
 });
 
-
 var app = builder.Build();
 
 

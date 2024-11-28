@@ -87,20 +87,58 @@ namespace WishList.Services
 
         public async Task UpdateItem(Item item)
         {
+            Debug.WriteLine("===UpdateItem===");
             HttpClient client = new HttpClient();
             string apiUrl = GetApiUrl() + "api/item/" + item.Id;
+            Debug.WriteLine("item.Id: " + item.Id);
+
 
             try
             {
                 var json = JsonSerializer.Serialize(item);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await client.PutAsync(apiUrl, content);
+                Debug.WriteLine($"response: {response}");
 
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error deleting item: {ex.Message}");
             }
+        }
+
+        public async Task AddItem(Item item)
+        {
+            Debug.WriteLine("===AddItem===");
+            HttpClient client = new HttpClient();
+            string apiUrl = GetApiUrl() + "api/item/";
+
+            try
+            {
+                var itemToSend = new
+                {
+                    item.Id,
+                    item.Naam,
+                    item.Bedrag,
+                    item.Beschrijving,
+                    item.Bedrijf
+                };
+
+                var json = JsonSerializer.Serialize(itemToSend);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                Debug.WriteLine($"Sending POST request to: {apiUrl}");
+                Debug.WriteLine($"Content: {json}");
+
+                var response = await client.PostAsync(apiUrl, content);
+                Debug.WriteLine($"response: {response}");
+
+                var result = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine($"Response: {result}");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error adding item: {ex.Message}");
+            }   
         }
     }
 }

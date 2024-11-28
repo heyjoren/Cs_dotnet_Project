@@ -15,9 +15,6 @@ public partial class Items : ContentPage, INotifyPropertyChanged
 
     private readonly IPopupService popupService;
 
-    //api mock data
-    //private readonly ApiMockData apiMockData = new ApiMockData();
-
     //viewmodel
     private ItemViewModel viewModel;
 
