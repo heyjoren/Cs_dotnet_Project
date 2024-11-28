@@ -22,6 +22,15 @@ public class ItemViewModel : INotifyPropertyChanged
         DeleteCommand = new Command<Item>(DeleteItem);
         UpdateCommand = new Command<Item>(UpdateItem);
         LoadItems();
+
+
+        MessagingCenter.Subscribe<WishList.Services.ApiMockData>(this, "ItemAdded", async (sender) =>
+        {
+            Debug.WriteLine("MessageCenter received in ItemViewModel");
+            await Task.Delay(100);
+            LoadItems();
+            Debug.WriteLine("Items reloaded after MessageCenter notification");
+        });
     }
 
     private async void LoadItems()

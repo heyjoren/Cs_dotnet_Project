@@ -125,14 +125,12 @@ namespace WishList.Services
 
                 var json = JsonSerializer.Serialize(itemToSend);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                Debug.WriteLine($"Sending POST request to: {apiUrl}");
-                Debug.WriteLine($"Content: {json}");
 
                 var response = await client.PostAsync(apiUrl, content);
                 Debug.WriteLine($"response: {response}");
 
-                var result = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine($"Response: {result}");
+                MessagingCenter.Send(this, "ItemAdded");
+                Debug.WriteLine("MessagingCenter message sent");
             }
             catch (Exception ex)
             {
