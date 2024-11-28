@@ -25,7 +25,9 @@ public class addItemViewModel : INotifyPropertyChanged
 
     private async void AddItem(Item item)
     {
-        //ObservableItems.Remove(item);
+        Debug.WriteLine("===addViewModel.cs===");
+        Debug.WriteLine(item);
+
         await apiService.AddItem(item);
 
         OnPropertyChanged(nameof(AddCommand));

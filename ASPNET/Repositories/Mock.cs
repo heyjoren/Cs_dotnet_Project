@@ -9,6 +9,7 @@ namespace ASPNET.Repositories
 {
     public class Mock : IRepo
     {
+        private static int currentId = 4;
         List<Item> itemsList = new List<Item>();
 
         public Mock()
@@ -20,6 +21,7 @@ namespace ASPNET.Repositories
 
         public void AddItem(Item i)
         {
+            i.Id = currentId++;
             itemsList.Add(i);
         }
 
@@ -41,8 +43,6 @@ namespace ASPNET.Repositories
 
         public void UpdateItem(Item i)
         {
-            Console.WriteLine("=== Update ===");
-            Console.WriteLine("id: " + i.Id);
             itemsList[i.Id - 1] = i;
         }
 

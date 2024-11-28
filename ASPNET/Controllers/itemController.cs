@@ -33,6 +33,8 @@ namespace ASPNET.Controllers
         public ActionResult GetAllItems()
         {
             var items = repo.GetAllItems();
+            
+            Console.WriteLine("===GetAllItems===");
             foreach(Item item in items)
             {
                 Console.Write("item: ");

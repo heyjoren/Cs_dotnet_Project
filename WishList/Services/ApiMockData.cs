@@ -117,7 +117,6 @@ namespace WishList.Services
             {
                 var itemToSend = new
                 {
-                    item.Id,
                     item.Naam,
                     item.Bedrag,
                     item.Beschrijving,
