@@ -6,6 +6,7 @@ namespace WishList.View.Items.Add
 {
     public partial class addItem : ContentPage
     {
+
         private bool nameErrorVisible= true;
 
         public bool NameErrorVisible
@@ -51,17 +52,17 @@ namespace WishList.View.Items.Add
             }
         }
 
-        //public bool NameErrorVisible { get; set; } = true;
-        //public bool PriceErrorVisible { get; set; } = true;
-        //public bool ManufacturerErrorVisible { get; set; } = true;
         public bool CanAdd => !string.IsNullOrEmpty(NameEntry?.Text) &&
                          !string.IsNullOrEmpty(PriceEntry?.Text) &&
                          !string.IsNullOrEmpty(ManufacturerEntry?.Text);
 
+        //viewmodel
+        private addItemViewModel viewModel;
 
         public addItem()
         {
             InitializeComponent();
+            viewModel = new addItemViewModel();
             BindingContext = this;
         }
 
@@ -70,11 +71,11 @@ namespace WishList.View.Items.Add
             if (CanAdd)
             {
                 Item item = new Item(NameEntry.Text, float.Parse(PriceEntry.Text), DescriptionEditor.Text, ManufacturerEntry.Text);
-                Debug.WriteLine(item);
 
-                MockDataStore.ItemsList.Add(item);
-                MockDataStore.ObservableItems.Add(item);
-                
+                viewModel.AddCommand.Execute(item);
+                //MockDataStore.ItemsList.Add(item);
+                //MockDataStore.ObservableItems.Add(item);
+
                 NameEntry.Text = string.Empty;
                 PriceEntry.Text = string.Empty;
                 DescriptionEditor.Text = string.Empty;

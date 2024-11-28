@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WishList.Model
@@ -13,17 +14,28 @@ namespace WishList.Model
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public int Id { get; private set; }
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("naam")]
         public string Naam { set; get; }
+
+        [JsonPropertyName("bedrag")]
         public float Bedrag { set; get; }
-        public string Beschrijving { set; get; }
+
+        [JsonPropertyName("beschrijving")]
+        public string? Beschrijving { set; get; }
+
+        [JsonPropertyName("bedrijf")]
         public string Bedrijf { set; get; }
+
+        [JsonPropertyName("datumToegevoegd")]
         public DateTime DatumToegevoegd { set; get; }
 
         public Item()
         {
-            currentId++;
             Id = currentId;
+            currentId++;
             Naam = "";
             Bedrag = 0;
             Beschrijving = "";
@@ -33,8 +45,8 @@ namespace WishList.Model
 
         public Item(string _Naam, float _Bedrag, string _Beschrijving, string _Bedrijf)
         {
-            currentId++;
             Id = currentId;
+            currentId++;
             Naam = _Naam;
             Bedrag = _Bedrag;
             Beschrijving = _Beschrijving;
@@ -44,11 +56,20 @@ namespace WishList.Model
 
         public Item(string _Naam, float _Bedrag, string _Beschrijving, string _Bedrijf, DateTime _DatumToegevoegd)
         {
-            currentId++;
             Id = currentId;
+            currentId++;
             Naam = _Naam;
             Bedrag = _Bedrag;
             Beschrijving = _Beschrijving;
+            Bedrijf = _Bedrijf;
+            DatumToegevoegd = _DatumToegevoegd;
+        }
+        public Item(string _Naam, float _Bedrag, string _Bedrijf, DateTime _DatumToegevoegd)
+        {
+            Id = currentId;
+            currentId++;
+            Naam = _Naam;
+            Bedrag = _Bedrag;
             Bedrijf = _Bedrijf;
             DatumToegevoegd = _DatumToegevoegd;
         }
