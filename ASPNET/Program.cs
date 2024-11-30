@@ -12,9 +12,9 @@ builder.Services.AddControllers();  //build de router
 // builder.Services.AddOpenApi();
 
 // builder.Services.AddScoped<IRepo, Mock>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data    naar mock data test
-builder.Services.AddSingleton<IRepo, Mock>();
+// builder.Services.AddSingleton<IRepo, Mock>();
 
-// builder.Services.AddScoped<IRepo, MySQLRepo>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data         naar sql
+builder.Services.AddScoped<IRepo, MySQLRepo>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data         naar sql
 
 string connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];    // gaat in de appsettings kijken
 
@@ -28,8 +28,11 @@ builder.Services.AddLogging(builder =>
     builder.AddDebug();
 });
 
-var app = builder.Build();
 
+builder.WebHost.UseUrls("http://*:80");
+
+
+var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
@@ -38,8 +41,7 @@ var app = builder.Build();
 //     app.MapOpenApi();
 // }
 
-app.UseHttpsRedirection();      //van http naar https    //mag comment worden
-
+// app.UseHttpsRedirection();      //van http naar https    //mag comment worden
 
 app.UseAuthorization();      //gebruik van tokers
 app.MapControllers();        //build de routes in de router

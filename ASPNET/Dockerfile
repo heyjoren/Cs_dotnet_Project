@@ -7,5 +7,6 @@ RUN dotnet publish "ASPNET.csproj" -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
+EXPOSE 80
 COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "ASPNET.dll"]
