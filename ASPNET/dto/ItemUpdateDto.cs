@@ -10,7 +10,7 @@ namespace ASPNET.dto
         // public int Id {set; get; }
         public string Naam { set; get; }
         public float Bedrag { set; get; }
-        public string Beschrijving { set; get; }
+        public string? Beschrijving { set; get; }
         public string Bedrijf { set; get; }
     }
 }
