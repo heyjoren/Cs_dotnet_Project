@@ -1,6 +1,5 @@
 using CommunityToolkit.Maui.Views;
 using WishList.Model;
-using WishList.Local_moc_data;
 
 namespace WishList.View.Items.Update
 {
@@ -9,7 +8,6 @@ namespace WishList.View.Items.Update
         private Item _item;
         public updateItem(Item item)
         {
-
             InitializeComponent();
             _item = item;
             BindingContext = item;

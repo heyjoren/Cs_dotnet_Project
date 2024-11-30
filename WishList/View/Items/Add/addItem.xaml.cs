@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using WishList.Local_moc_data;
 using WishList.Model;
 
 namespace WishList.View.Items.Add
@@ -73,9 +71,6 @@ namespace WishList.View.Items.Add
                 Item item = new Item(NameEntry.Text, float.Parse(PriceEntry.Text), DescriptionEditor.Text, ManufacturerEntry.Text);
 
                 viewModel.AddCommand.Execute(item);
-
-                //MockDataStore.ItemsList.Add(item);
-                //MockDataStore.ObservableItems.Add(item);
 
                 NameEntry.Text = string.Empty;
                 PriceEntry.Text = string.Empty;

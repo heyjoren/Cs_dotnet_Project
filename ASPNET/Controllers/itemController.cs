@@ -18,8 +18,6 @@ namespace ASPNET.Controllers
     [Route("api/item")]
     public class itemController : ControllerBase
     {
-        Mock mock = new Mock();
-
         private readonly IRepo repo;
         private readonly IMapper mapper;
 
@@ -32,24 +30,12 @@ namespace ASPNET.Controllers
         [HttpGet]
         public ActionResult GetAllItems()
         {
-            var items = repo.GetAllItems();
-            
-            Console.WriteLine("===GetAllItems===");
-            foreach(Item item in items)
-            {
-                Console.Write("item: ");
-                Console.Write("item.id: " + item.Id);
-                Console.Write(" item.naam: " + item.Naam);
-                Console.Write(" item.datum: " + item.DatumToegevoegd);
-                Console.Write("\n");
-            }
             return Ok(mapper.Map<IEnumerable<ItemReadDto>>(repo.GetAllItems()));
         }
 
         [HttpGet("{id}", Name ="GetItemById")]       //sub route
         public ActionResult GetItemById(int id)
         {
-            
             return Ok(mapper.Map<Item>(repo.GetItemById(id)));
         }
 
@@ -57,8 +43,6 @@ namespace ASPNET.Controllers
         [HttpPost]
         public IActionResult AddItem(itemWriteDto i)
         {
-            Console.WriteLine("===Item===");
-            Console.WriteLine("Item: " + i.Naam + " " + i.Bedrag);
             var item = mapper.Map<Item>(i);
 
             repo.AddItem(item);
@@ -94,7 +78,6 @@ namespace ASPNET.Controllers
             {
                 return NotFound();
             }
-
 
             repo.DeleteItem(bestaandItem);
             repo.SaveChanges();
