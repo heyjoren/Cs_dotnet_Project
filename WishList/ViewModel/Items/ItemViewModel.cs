@@ -25,9 +25,13 @@ public class ItemViewModel : INotifyPropertyChanged
         LoadItems();
 
 
-        MessagingCenter.Subscribe<WishList.Services.ApiMockData>(this, "ItemAdded", async (sender) =>
+        //MessagingCenter.Subscribe<WishList.Services.ApiMockData>(this, "ItemAdded", async (sender) =>
+        //{
+        //    LoadItems();
+        //});
+
+        MessagingCenter.Subscribe<WishList.Services.ApiMySQL>(this, "ItemAdded", async (sender) =>
         {
-            //await Task.Delay(100);
             LoadItems();
         });
     }

@@ -19,6 +19,7 @@ namespace WishList.Services
             try
             {
                 Debug.WriteLine("ApiMySQL");
+                Debug.WriteLine("==GetAllItems===");
 
                 // Gebruik een platform-specifieke URL
                 string apiUrl = GetApiUrl();
