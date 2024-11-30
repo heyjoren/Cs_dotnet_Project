@@ -11,14 +11,11 @@ namespace ASPNET.Mappings
 {
     public class ItemProfile : Profile
     {
-        
         public ItemProfile()
         {
             CreateMap<Item, ItemReadDto>();         //read
             CreateMap<itemWriteDto, Item>();        //write
             CreateMap<ItemUpdateDto, Item>();        //update
-
         }
-
     }
 }

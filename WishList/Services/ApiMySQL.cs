@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using WishList.Model;
 
 namespace WishList.Services
@@ -18,26 +14,16 @@ namespace WishList.Services
             HttpClient client = new HttpClient();
             try
             {
-                Debug.WriteLine("ApiMySQL");
-                Debug.WriteLine("==GetAllItems===");
-
                 // Gebruik een platform-specifieke URL
                 string apiUrl = GetApiUrl();
                 apiUrl += "api/item/";
 
                 string response = await client.GetStringAsync(apiUrl);
 
-                Debug.WriteLine("response");
-                Debug.WriteLine(response);
-
-                Debug.WriteLine("JsonSerializer.Deserialize<List<Item>>(response)");
-                Debug.WriteLine(JsonSerializer.Deserialize<List<Item>>(response));
-
                 return JsonSerializer.Deserialize<List<Item>>(response);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("ApiMockData.cs");
                 Debug.WriteLine($"Error: {ex.Message}");
                 return new List<Item>();
             }
@@ -83,7 +69,6 @@ namespace WishList.Services
             try
             {
                 var response = await client.DeleteAsync(apiUrl);
-
             }
             catch (Exception ex)
             {
@@ -93,19 +78,14 @@ namespace WishList.Services
 
         public async Task UpdateItem(Item item)
         {
-            Debug.WriteLine("===UpdateItem===");
             HttpClient client = new HttpClient();
             string apiUrl = GetApiUrl() + "api/item/" + item.Id;
-            Debug.WriteLine("item.Id: " + item.Id);
-
 
             try
             {
                 var json = JsonSerializer.Serialize(item);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await client.PutAsync(apiUrl, content);
-                Debug.WriteLine($"response: {response}");
-
             }
             catch (Exception ex)
             {
@@ -115,7 +95,6 @@ namespace WishList.Services
 
         public async Task AddItem(Item item)
         {
-            Debug.WriteLine("===AddItem===");
             HttpClient client = new HttpClient();
             string apiUrl = GetApiUrl() + "api/item/";
 
@@ -134,10 +113,8 @@ namespace WishList.Services
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await client.PostAsync(apiUrl, content);
-                Debug.WriteLine($"response: {response}");
 
                 MessagingCenter.Send(this, "ItemAdded");
-                Debug.WriteLine("MessagingCenter message sent");
             }
             catch (Exception ex)
             {

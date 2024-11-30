@@ -7,7 +7,6 @@ using WishList.Services;
 
 public class ItemViewModel : INotifyPropertyChanged
 {
-    //private readonly ApiMockData apiService = new ApiMockData();
     private readonly ApiMySQL apiService = new ApiMySQL();
     public ObservableCollection<Item> ObservableItems { get; set; }
     public ICommand DeleteCommand { get; }
@@ -15,20 +14,12 @@ public class ItemViewModel : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
-    //public IDataStore DataStore => DependencyService.Get<IDataStore>();
-
     public ItemViewModel()
     {
         ObservableItems = new ObservableCollection<Item>();
         DeleteCommand = new Command<Item>(DeleteItem);
         UpdateCommand = new Command<Item>(UpdateItem);
         LoadItems();
-
-
-        //MessagingCenter.Subscribe<WishList.Services.ApiMockData>(this, "ItemAdded", async (sender) =>
-        //{
-        //    LoadItems();
-        //});
 
         MessagingCenter.Subscribe<WishList.Services.ApiMySQL>(this, "ItemAdded", async (sender) =>
         {
@@ -38,12 +29,10 @@ public class ItemViewModel : INotifyPropertyChanged
 
     private async void LoadItems()
     {
-        Debug.WriteLine("===LoadItem===");
         var items = await apiService.GetAllItems();
         ObservableItems.Clear();
         foreach (var item in items)
         {
-            Debug.WriteLine("ApiMockData test item: " + item);
             ObservableItems.Add(item);
         }
         OnPropertyChanged(nameof(ObservableItems));
@@ -59,9 +48,6 @@ public class ItemViewModel : INotifyPropertyChanged
 
     private async void UpdateItem(Item item)
     {
-        Debug.WriteLine("updateViewModel");
-        //viewModel.ObservableItems[item.Id - 1] = item;
-
         await apiService.UpdateItem(item);
         LoadItems();
         OnPropertyChanged(nameof(ObservableItems));
