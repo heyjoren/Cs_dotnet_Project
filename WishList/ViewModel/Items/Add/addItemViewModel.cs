@@ -12,7 +12,8 @@ using WishList.Services;
 
 public class addItemViewModel : INotifyPropertyChanged
 {
-    private readonly ApiMockData apiService = new ApiMockData();
+    //private readonly ApiMockData apiService = new ApiMockData();
+    private readonly ApiMySQL apiService = new ApiMySQL();
     //public ObservableCollection<Item> ObservableItems { get; set; }
     public ICommand AddCommand { get; }
 

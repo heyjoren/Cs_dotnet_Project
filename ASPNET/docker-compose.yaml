@@ -1,5 +1,16 @@
-version: '3.8'
+# version: '3.8'
 services:
+  api:
+    container_name: "aspnet_api"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=mysql;Database=item;User=item_user;Password=item_pass;
+    depends_on:
+      - mysql
 
 ### Mysql container
   mysql:

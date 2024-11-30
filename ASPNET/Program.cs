@@ -28,8 +28,11 @@ builder.Services.AddLogging(builder =>
     builder.AddDebug();
 });
 
-var app = builder.Build();
 
+builder.WebHost.UseUrls("http://*:80");
+
+
+var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
@@ -38,8 +41,7 @@ var app = builder.Build();
 //     app.MapOpenApi();
 // }
 
-app.UseHttpsRedirection();      //van http naar https    //mag comment worden
-
+// app.UseHttpsRedirection();      //van http naar https    //mag comment worden
 
 app.UseAuthorization();      //gebruik van tokers
 app.MapControllers();        //build de routes in de router

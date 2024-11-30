@@ -66,13 +66,14 @@ namespace WishList.View.Items.Add
             BindingContext = this;
         }
 
-        private void OnAddButtonClicked(object sender, EventArgs e)
+        private async void OnAddButtonClicked(object sender, EventArgs e)
         {
             if (CanAdd)
             {
                 Item item = new Item(NameEntry.Text, float.Parse(PriceEntry.Text), DescriptionEditor.Text, ManufacturerEntry.Text);
 
                 viewModel.AddCommand.Execute(item);
+
                 //MockDataStore.ItemsList.Add(item);
                 //MockDataStore.ObservableItems.Add(item);
 

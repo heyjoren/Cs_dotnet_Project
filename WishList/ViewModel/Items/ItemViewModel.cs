@@ -7,7 +7,8 @@ using WishList.Services;
 
 public class ItemViewModel : INotifyPropertyChanged
 {
-    private readonly ApiMockData apiService = new ApiMockData();
+    //private readonly ApiMockData apiService = new ApiMockData();
+    private readonly ApiMySQL apiService = new ApiMySQL();
     public ObservableCollection<Item> ObservableItems { get; set; }
     public ICommand DeleteCommand { get; }
     public ICommand UpdateCommand { get; }
@@ -24,9 +25,13 @@ public class ItemViewModel : INotifyPropertyChanged
         LoadItems();
 
 
-        MessagingCenter.Subscribe<WishList.Services.ApiMockData>(this, "ItemAdded", async (sender) =>
+        //MessagingCenter.Subscribe<WishList.Services.ApiMockData>(this, "ItemAdded", async (sender) =>
+        //{
+        //    LoadItems();
+        //});
+
+        MessagingCenter.Subscribe<WishList.Services.ApiMySQL>(this, "ItemAdded", async (sender) =>
         {
-            //await Task.Delay(100);
             LoadItems();
         });
     }
