@@ -12,9 +12,9 @@ builder.Services.AddControllers();  //build de router
 // builder.Services.AddOpenApi();
 
 // builder.Services.AddScoped<IRepo, Mock>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data    naar mock data test
-// builder.Services.AddSingleton<IRepo, Mock>();
+builder.Services.AddSingleton<IRepo, Mock>();
 
-builder.Services.AddScoped<IRepo, MySQLRepo>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data         naar sql
+// builder.Services.AddScoped<IRepo, MySQLRepo>();      //1 implementatie in hele app en linken/mappen tussen IRepo en data         naar sql
 
 string connectionString = builder.Configuration["ConnectionStrings:DefaultConnection"];    // gaat in de appsettings kijken
 
