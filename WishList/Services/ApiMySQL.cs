@@ -34,14 +34,7 @@ namespace WishList.Services
         {
             // Controleer het platform
 #if ANDROID
-            if (IsEmulator())
-            {
                 return "http://10.0.2.2:8080/";
-            }
-            else
-            {
-                return "http://192.168.56.1:8080/";
-            }
 #elif WINDOWS
             return "http://localhost:8080/";
 #else
@@ -49,18 +42,6 @@ namespace WishList.Services
 #endif
         }
 
-        private bool IsEmulator()
-        {
-#if ANDROID
-            string model = Android.OS.Build.Model.ToLower();
-            string device = Android.OS.Build.Device.ToLower();
-
-            // Controleer de aanwezigheid van typische emulator-kenmerken
-            return model.Contains("sdk") && device.Contains("emu");
-#else
-            return false;
-#endif
-        }
         public async Task DeleteItem(Item item)
         {
             HttpClient client = new HttpClient();
