@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using WishList.Model;
 
 namespace WishList.View.Items.Add
@@ -52,6 +53,7 @@ namespace WishList.View.Items.Add
 
         public bool CanAdd => !string.IsNullOrEmpty(NameEntry?.Text) &&
                          !string.IsNullOrEmpty(PriceEntry?.Text) &&
+                         float.TryParse(PriceEntry.Text, out _) &&
                          !string.IsNullOrEmpty(ManufacturerEntry?.Text);
 
         //viewmodel
@@ -81,12 +83,25 @@ namespace WishList.View.Items.Add
             }
         }
 
-        private void OnTextChanged(object sender, EventArgs e)
+        private void OnTextChangedNaam(object sender, EventArgs e)
         {
             NameErrorVisible = string.IsNullOrEmpty(NameEntry.Text);
+
+            OnPropertyChanged(nameof(CanAdd));
+        }
+
+        private void OnTextChangedPrijs(object sender, EventArgs e)
+        {
             PriceErrorVisible = string.IsNullOrEmpty(PriceEntry.Text);
             PriceErrorVisibleGetal = !float.TryParse(PriceEntry.Text, out _);
+
+            OnPropertyChanged(nameof(CanAdd));
+        }
+
+        private void OnTextChangedFabriekant(object sender, EventArgs e)
+        {
             ManufacturerErrorVisible = string.IsNullOrEmpty(ManufacturerEntry.Text);
+
             OnPropertyChanged(nameof(CanAdd));
         }
     }
