@@ -1,11 +1,14 @@
-# CS-Dotnet_Project
- Wishlist
+# Wishlist
+ 
+Dit project bevat een ASP.NET Core API en een MySQL-database, ingepakt in Docker-containers.
+De app is gemaakt via visual studio samen met c# dotnet maui.
+
+Om de docker te maken moet je in de map ASPNET zitten in de command line en volgende commando's ingeven:
+
+- docker-compose build
+- docker-compose up -d
 
 
-opdracht:
-![image](https://github.com/user-attachments/assets/0fc226f1-cc7e-464e-a8bd-a37660849537)
-![image](https://github.com/user-attachments/assets/6418c149-940c-459e-b271-39b243a2519a)
+<hr>
 
-
-
-[project and practical exam.pdf](https://github.com/user-attachments/files/17615905/project.and.practical.exam.pdf)
+Om de app te starten kan je dit doen via de:
