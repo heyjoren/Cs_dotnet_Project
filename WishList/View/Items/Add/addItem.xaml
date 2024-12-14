@@ -10,16 +10,16 @@
             <Label Text="* is verplicht" FontSize="Small" HorizontalOptions="Center" />
 
             <Label Text="Naam*:" FontAttributes="Bold" />
-            <Entry Placeholder="Naam" x:Name="NameEntry" TextChanged="OnTextChanged"/>
+            <Entry Placeholder="Naam" x:Name="NameEntry" TextChanged="OnTextChangedNaam"/>
             <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding NameErrorVisible}" />
 
             <Label Text="Prijs* €:" FontAttributes="Bold" />
-            <Entry Placeholder="0" Keyboard="Numeric" x:Name="PriceEntry" TextChanged="OnTextChanged"/>
+            <Entry Placeholder="0" Keyboard="Numeric" x:Name="PriceEntry" TextChanged="OnTextChangedPrijs"/>
             <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding PriceErrorVisible}" />
             <Label Text="Het moet een getal zijn" TextColor="Red" IsVisible="{Binding PriceErrorVisibleGetal}" />
 
             <Label Text="Fabrikant*:" FontAttributes="Bold" />
-            <Entry Placeholder="Fabrikant" x:Name="ManufacturerEntry" TextChanged="OnTextChanged"/>
+            <Entry Placeholder="Fabrikant" x:Name="ManufacturerEntry" TextChanged="OnTextChangedFabriekant"/>
             <Label Text="Je moet dit veld invullen" TextColor="Red" IsVisible="{Binding ManufacturerErrorVisible}" />
 
             <Label Text="Beschrijving:" FontAttributes="Bold" />
