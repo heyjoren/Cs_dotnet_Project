@@ -8,3 +8,8 @@ Om de docker te maken moet je in de map ASPNET zitten in de command line en volg
 
 - docker-compose build
 - docker-compose up -d
+
+
+<hr>
+
+Om de app te starten kan je dit doen via de:
