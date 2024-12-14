@@ -12,3 +12,6 @@ Om de docker te maken moet je in de map ASPNET zitten in de command line en volg
 <hr>
 
 Om de app te starten kan je dit doen via de:
+
+- de run knop in visual studio
+- de shortcut van de run knop f5
